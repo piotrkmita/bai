@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="backgroundYellow(this)">
+		<h1 onclick="addString(this)">Another Brick in the Wall</h1>
+		<h3 onclick="showDescription()">Pink Floyd</h3>
+		<p onclick="italic(this)" oncopy="copyrightMessage()" >We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,13 +15,45 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p id="description" style="visibility: hidden;" onclick="addPhoto()">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
+
+
 		<script>
 			// a JavaScript code here ...
-			
+			function addString(element) {
+				element.innerHTML = "Another Brick in the Wall (Part 2)"
+			}
+
+			function showDescription() {
+				document.getElementById("description").style.visibility = "visible";
+			}
+
+			function italic(element) {
+				element.innerHTML = element.innerHTML.italics()
+			}
+
+			function backgroundYellow() {
+				document.body.style.background = "yellow"
+			}
+
+			function copyrightMessage() {
+				window.alert("Copyright");
+			}
+
+			function addPhoto() {
+				var p = document.createElement('p')
+				var img = document.createElement('img');
+				img.src = 'Pink_Floyd_-_all_members.jpg';
+				document.getElementById('description').appendChild(p).appendChild(img)
+
+				//Version without p and description
+				// document.body.appendChild(img);
+
+				//This works too
+				// element.innerHTML = element.innerHTML + "</br>" + "<img src='Pink_Floyd_-_all_members.jpg' />"
+			}
 		</script>
 	</body>
 </html>
